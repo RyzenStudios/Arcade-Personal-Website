@@ -1,0 +1,215 @@
+/* Reset some default styling */
+body, h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+/* Body styling */
+body {
+  line-height: 1.6;
+  background-color: #000;
+  color: #fff;
+  overflow: hidden; /* Prevent scrolling */
+
+}
+
+/* Header and navigation styling */
+
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Home section styling */
+.home-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  height: 100vh; /* Set the section's height to viewport height */
+  background: url('AdobeStock_239453726.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+
+/* Home section styling */
+/* Home section styling */
+.home-section {
+  display: flex;
+  flex-direction: column; /* Display elements in a column */
+  align-items: center;
+  justify-content: flex-start; /* Align elements to the top */
+  height: 100vh;
+  background: url('AdobeStock_239453726.png') no-repeat center center fixed;
+  background-size: cover;
+  padding: 20px; /* Remove padding */
+  animation: flicker 0.1s infinite;
+
+}
+
+.home-section h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  text-shadow: 0px 0px 10px rgba(74, 35, 92, 0.5);
+  margin: 0; /* Remove margin */
+  color: rgb(0, 245, 131);
+  text-shadow: 0px 0px 20px rgba(0, 245, 131, 0.459); /* Glowing text effect */
+  animation: glitch 0.1s infinite; /* Add glitch animation */
+  animation: flicker 0.1s infinite;
+
+
+}
+
+.home-section p {
+  font-size: 2rem;
+  color: rgb(0, 245, 131);
+  margin: 0; /* Remove margin */
+  text-align: right;
+  text-shadow: 0px 0px 20px rgba(0, 245, 131, 0.445); /* Glowing text effect */
+  animation: glitch 0.1s infinite; /* Add glitch animation */
+  animation: flicker 0.1s infinite;
+
+
+}
+
+.home-section p1 {
+  font-size: 0.9rem;
+  color: #f3f5f4;
+  text-align: right;
+  animation: glitch 0.1s infinite; /* Add glitch animation */
+  text-shadow: 0px 0px 20px rgb(255, 255, 255); /* Glowing text effect */
+  padding: 15px;
+  animation: flicker 0.1s infinite;
+
+  
+}
+
+/* Footer styling */
+footer {
+  
+  text-align: center;
+  padding: 1rem 0;
+  background-color: #33333300;
+  color: #00f583;
+}
+
+/* Links styling */
+a {
+  color: #00f583;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #00f583;
+}
+
+/* ... (Other styles) */
+
+
+.button {
+  display: block; /* Use block display to take up full width */
+  width: 100%;
+  padding: 10px 505px;
+  margin: 15px;
+  margin-left: -490px;
+  background-color: #007bff00;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 40px;
+  text-align: center;
+  text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.507);
+  position: relative;
+  animation: glitch 0.1s infinite; /* Add glitch animation */
+  animation: flicker 0.1s infinite;
+  animation: distort 0.5s infinite;
+  cursor: pointer;
+
+
+}
+
+.button[data-text] span {
+  display: inline-block;
+}
+
+.button:hover {
+  background-color: #00f583;
+  text-shadow: 0px 0px 20px rgb(0, 245, 131);
+  color: #000;
+}
+
+.button:hover::before,
+.button:hover::after {
+  content: '[';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: blink 1s infinite; /* Add blinking animation */
+
+}
+
+.button:hover::before {
+  left: 50px; 
+}
+
+.button:hover::after {
+  content: ']';
+  right: 70px; 
+
+}
+@keyframes blink {
+  0% {
+    opacity: 1; /* Visible */
+  }
+  50% {
+    opacity: 0; /* Invisible */
+  }
+  100% {
+    opacity: 1; /* Visible */
+  }
+}
+
+@keyframes glitch {
+  0%, 100% {
+    transform: translate(0);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translate(0px, 0px);
+  }
+  30%, 50%, 70% {
+    transform: translate(0.45px, 0.45px);
+  }
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes distort {
+  0%, 100% {
+    transform: skewX(0);
+  }
+  20%, 40%, 60%, 80% {
+    transform: skewX(1px);
+  }
+  30%, 50%, 70% {
+    transform: skewX(-1deg);
+  }
+}
