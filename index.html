@@ -6,52 +6,132 @@
     <title>Your Name - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet'>
-    <audio id="hoverSound" src="bit.mp3"></audio>
+    <audio id="hoverSound" src="bit2.mp3" ></audio>
+    <button id="soundToggle" class="sound-toggle"><img id="muteIcon" src="sound-on.png" alt="Sound Icon"></button>
+    <audio id="muteSound" src="mute.mp3" preload="auto"></audio>
+    <audio id="quitSound" src="Tv.mp3"></audio>
+    <audio id="OnSound" src="TvOn.mp3"></audio>
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/gsap.min.js"></script>
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
+                
+                <li><a href="#">Home</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
+    <p class="start-text">PRESS ENTER TO START</p>
+
+    <div class="white-container"></div>
+    <div class="black-container"></div>
 
     <section id="home" class="home-section">
+        <div class="tv-screen"></div>
+
         <h1>Mohamed Eltaib</h1>
         <p>Portfolio</p>
         <p1>v0.0.1</p1>
         <div class="buttons">
-            <a href="#home" class="button" data-text="Home()">Home();</a>
-            <a href="#portfolio" class="button" data-text="Portfolio()">Portfolio();</a>
-            <a href="#contact" class="button" data-text="Contact()">Contact();</a>
+            <a href="#" class="button" data-text="Home()">Home();</a>
+            <a href="#" class="button" data-text="Portfolio()">Portfolio();</a>
+            <a href="#" class="button" data-text="Contact()">Contact();</a>
             <a href="#" class="button" data-text="Quit()">Quit();</a>
           </div>
-          
     </section>
+    <footer>
+        <p>&copy; 2023 Mohamed Eltaib. All rights reserved.</p>
+    </footer>
+<script>
 
-    <script>
-        const hoverSound = document.getElementById('hoverSound');
-        const buttons = document.querySelectorAll('.button[data-text] span');
-      
-        buttons.forEach(button => {
-          button.addEventListener('mouseenter', () => {
-            hoverSound.currentTime = 0; // Reset the audio to the beginning
-            hoverSound.play();
-          });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.button[data-text]');
+    const blackContainer = document.querySelector('.black-container');
+    const whiteContainer = document.querySelector('.white-container');
+    const startText = document.querySelector('.start-text');
+    const hoverSound = document.getElementById('hoverSound');
+    const muteSoundButton = document.getElementById('soundToggle');
+    const muteSoundIcon = document.getElementById('muteSound');
+    const quitSound = document.getElementById('quitSound');
+
+    let isSoundMuted = false;
+
+    // Toggle sound when the mute sound icon is clicked
+    muteSoundButton.addEventListener('click', () => {
+        
+                if (isSoundMuted) {
+                    muteSoundIcon.play();
+                    isSoundMuted = false;
+                    muteIcon.src = 'sound-on.png';
+                } else {
+                    muteSoundIcon.pause();
+                    muteSoundIcon.currentTime = 0;
+                    isSoundMuted = true;
+                    muteIcon.src = 'sound-off.png';
+                }
+            });
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            quitSound.play();
+
+            if (button.getAttribute('data-text') === 'Quit()') {
+                whiteContainer.style.transform = 'scaleY(0.01)';
+                setTimeout(() => {
+                    whiteContainer.style.transform = 'scaleY(0)';
+                    setTimeout(() => {
+                        whiteContainer.style.transform = 'scaleX(0)';
+                    }, 50); 
+                }, 10); 
+                blackContainer.style.opacity = 1;
+                whiteContainer.style.opacity = 1;
+                startText.style.opacity = 1;
+
+                startText.style.display = 'block';
+            } else {
+                // Handle other buttons
+            }
         });
-      </script>
-      
 
-    <!-- More sections for portfolio and contact could be added here -->
+        button.addEventListener('mouseover', () => {
+            if (!isSoundMuted) {
+                hoverSound.currentTime = 0;
+                hoverSound.play();
+            }
+        });
+    });
 
+    document.addEventListener('keydown', event => {
+        if (event.keyCode === 13) {
+            OnSound.play();
+
+            whiteContainer.style.transform = 'scaleX(1)';
+            setTimeout(() => {
+                whiteContainer.style.transform = 'scaleY(1)';
+                setTimeout(() => {
+                    whiteContainer.style.transform = 'scaleX(1)';
+                }, 50); 
+            }, 10); 
+
+            blackContainer.style.opacity = 0;
+            whiteContainer.style.opacity = 0;
+            startText.style.opacity = 0;
+            startText.style.display = 'none';
+
+            // Play the mute sound icon only if sound is not muted
+            if (!isSoundMuted) {
+                muteSoundIcon.play();
+            }
+        }
+    });
+});
+
+</script>
 </body>
-
-<footer>
-    <p>&copy; 2023 Mohamed Eltaib. All rights reserved.</p>
-</footer>
 </html>
